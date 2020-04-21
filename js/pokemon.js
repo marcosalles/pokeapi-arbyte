@@ -30,6 +30,16 @@ function selecionarPokemon() {
 			document.querySelector('#pokeImage').src = imagem;
 			var tipos = response.data.types.map(t => t.type.name);
 			document.querySelector('#listaTipos').innerHTML = tipos.join(', ');
+			axios.get(`https://pokeapi.co/api/v2/type/${tipos[0]}`)
+				.then(response =>{
+					var exibe_carousel = response.data.pokemon.slice(0,10);
+					links = exibe_carousel.map(elm => {
+						textoLink = `<a class="carousel-item" href="#"><img
+							src="${poke_imagens[elm.pokemon.name]}"></a>`
+						return textoLink
+					})
+					document.querySelector('#carouselSimilares').innerHTML = links.join('')
+				})
 		})
 }
 
