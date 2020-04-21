@@ -5,13 +5,24 @@ var poke_imagens = {}
 document.addEventListener('DOMContentLoaded', function() {
 	axios.get('https://pokeapi.co/api/v2/pokemon?limit=251')
 		.then(response => {
-			pokemons = response.data.results
-			pokemons.forEach(poke=>poke_imagens[poke.name]='')
+			pokemons = response.data.results;
+			pokemons.forEach(poke=> {
+				var split = poke.url.split('/');
+				var numero = split[split.length-2];
+				var url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + numero + '.png';
+				poke_imagens[poke.name] = url;
+			});
 			console.log(poke_imagens)
 		})
 	var elems = document.querySelectorAll('.autocomplete');
-	var instances = M.Autocomplete.init(elems, {});
+	var instances = M.Autocomplete.init(elems, { data: poke_imagens });
 });
+
+function selecionarPokemon() {
+	var input = document.querySelector('#autocomplete-input');
+	var pokemon = pokemons[input.value];
+	console.log(pokemon);
+}
 
 // Carousel
 document.addEventListener('DOMContentLoaded', function() {
