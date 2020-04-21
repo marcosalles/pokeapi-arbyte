@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				var url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + numero + '.png';
 				poke_imagens[poke.name] = url;
 			});
-			console.log(poke_imagens)
-		})
+		});
 	var elems = document.querySelectorAll('.autocomplete');
 	var instances = M.Autocomplete.init(elems, { data: poke_imagens });
 });
@@ -22,10 +21,15 @@ function selecionarPokemon() {
 	var input = document.querySelector('#autocomplete-input');
 	axios.get(`https://pokeapi.co/api/v2/pokemon/${input.value}/`)
 		.then(response => {
-			document.querySelector('#nomePokemon').innerHTML = response.data.name.toUpperCase()
-			response.data.abilities.map((ab,i) => {
-				document.querySelector('#listaHabilidades').innerHTML = '<>'ab.ability.name
-			})
+			var pokemon = response.data.name;
+			document.querySelector('#nomePokemon').innerHTML = pokemon.toUpperCase();
+			var lista = document.querySelector('#listaHabilidades');
+			var habilidades = response.data.abilities.map(ab => `<p>${ab.ability.name}</p>`);
+			lista.innerHTML = habilidades.join('');
+			var imagem = poke_imagens[pokemon];
+			document.querySelector('#pokeImage').src = imagem;
+			var tipos = response.data.types.map(t => t.type.name);
+			document.querySelector('#listaTipos').innerHTML = tipos.join(', ');
 		})
 }
 
