@@ -1,9 +1,16 @@
+var pokemons
+var poke_imagens = {}
+
 // Search
 document.addEventListener('DOMContentLoaded', function() {
-	const axios = require('axios');
 	axios.get('https://pokeapi.co/api/v2/pokemon?limit=251')
+		.then(response => {
+			pokemons = response.data.results
+			pokemons.forEach(poke=>poke_imagens[poke.name]='')
+			console.log(poke_imagens)
+		})
 	var elems = document.querySelectorAll('.autocomplete');
-	var instances = M.Autocomplete.init(elems, options);
+	var instances = M.Autocomplete.init(elems, {});
 });
 
 // Carousel
