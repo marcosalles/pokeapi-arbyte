@@ -20,8 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function selecionarPokemon() {
 	var input = document.querySelector('#autocomplete-input');
-	var pokemon = pokemons[input.value];
-	console.log(pokemon);
+	axios.get(`https://pokeapi.co/api/v2/pokemon/${input.value}/`)
+		.then(response => {
+			document.querySelector('#nomePokemon').innerHTML = response.data.name.toUpperCase()
+			response.data.abilities.map((ab,i) => {
+				document.querySelector('#listaHabilidades').innerHTML = '<>'ab.ability.name
+			})
+		})
 }
 
 // Carousel
