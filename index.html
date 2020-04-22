@@ -16,8 +16,8 @@
 		<div class="nav-wrapper">
 			<a href="#" class="brand-logo">PokeArbyte</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="sass.html">Videos</a></li>
-				<li><a href="badges.html">Sobre</a></li>
+				<li><a href="#">Videos</a></li>
+				<li><a class="modal-trigger" href="#modal1">Sobre</a></li>
 				<li><a href="https://www.arbyte.com.br/">Arbyte</a></li>
 			</ul>
 		</div>
@@ -65,6 +65,27 @@
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 	<script type="text/javascript" src="js/pokemon.js"></script>
+	<!--Modal "Sobre"-->
+	  <!-- Modal Structure -->
+	  <div id="modal1" class="modal">
+		<div class="modal-content">
+		  <h4>PokeArbyte é um projeto de ensino da Arbyte</h4>
+		  <p>O objetivo dessa página é ensinar conceitos de HTML, CSS e Javascript através do uso de um
+			  framework amplamente difundido, o Materialize. 
+		  </p>
+		  <p>Todos os dados utilizados nesse site vêm da API pública <a href="https://pokeapi.co">PokéAPI</a>,
+			um projeto muito querido realizado por Paul Hallet e Zane Adickes. Thank you very much. A comunicação com a API
+			é realizada pelo <a href="https://github.com/axios/axios">AXIOS</a>. 
+		</p>
+		<p>Essa página foi construída durante uma live com <a href="https://github.com/marcosalles">@marcosalles</a> e <a href="https://github.com/rafaelmbsouza">@rafaelmbsouza</a>,
+			ambos tutores apaixonados da Arbyte. Você pode ver o vídeo completo da live no link nossa Navbar.
+		</p>
+		<p>A arbyte é uma escola profissionalizante, que ensina o que é necessário para entrar no mercado de trabalho. Nossos cursos duram até seis meses, e você só paga quando estiver empregado.</p>
+		</div>
+		<div class="modal-footer">
+		  <a href="#!" class="modal-close waves-effect waves-green btn-flat">BLZ</a>
+		</div>
+	  </div>
 </body>
 
 </html>

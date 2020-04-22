@@ -3,6 +3,7 @@ var poke_imagens = {}
 
 // Search
 document.addEventListener('DOMContentLoaded', function() {
+	startModal() //Chamando função para inicializar o modal da seção "sobre"
 	axios.get('https://pokeapi.co/api/v2/pokemon?limit=251')
 		.then(response => {
 			pokemons = response.data.results;
@@ -57,6 +58,12 @@ function startCarousel() {
 	var elems = document.querySelectorAll('.carousel');
 	var instances = M.Carousel.init(elems, {'fullWidth': true, numVisible: 4});
 };
+
+//Inicializa o nosso modal
+function startModal() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+  }
 
 /*
  autocomplete
